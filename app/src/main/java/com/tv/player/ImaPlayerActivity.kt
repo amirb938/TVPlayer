@@ -8,11 +8,11 @@ import com.google.ads.interactivemedia.v3.api.player.AdMediaInfo
 import com.google.ads.interactivemedia.v3.api.player.VideoAdPlayer
 import com.google.ads.interactivemedia.v3.api.player.VideoProgressUpdate
 import com.tv.core.base.TvPlayer
-import com.tv.core.util.mediaItems.MediaItem
-import com.tv.core.util.mediaItems.MediaQuality
 import com.tv.core.util.TvImaAdsLoader
 import com.tv.core.util.TvPlayerListener
+import com.tv.core.util.mediaItems.MediaItem
 import com.tv.core.util.mediaItems.MediaItemParent
+import com.tv.core.util.mediaItems.MediaQuality
 import com.tv.player.databinding.ActivityImaPlayerBinding
 import com.tv.player.util.UrlHelper
 
@@ -121,20 +121,25 @@ class ImaPlayerActivity : AppCompatActivity() {
 
     }
 
-    private val playerListener = object : TvPlayerListener{
+    private val playerListener = object : TvPlayerListener {
         override fun onMediaStartToPlay(mediaItem: MediaItemParent) {
             super.onMediaStartToPlay(mediaItem)
-            Log.i(TAG , "onMediaStartToPlay")
+            Log.i(TAG, "onMediaStartToPlay")
         }
 
         override fun onMediaComplete(mediaItem: MediaItemParent) {
             super.onMediaComplete(mediaItem)
-            Log.i(TAG , "onMediaComplete")
+            Log.i(TAG, "onMediaComplete")
         }
 
         override fun onMediaListComplete(mediaItem: MediaItemParent) {
             super.onMediaListComplete(mediaItem)
-            Log.i(TAG , "onMediaListComplete")
+            Log.i(TAG, "onMediaListComplete")
+        }
+
+        override fun onControllerVisibilityChanged(visibility: Int) {
+            super.onControllerVisibilityChanged(visibility)
+            Log.i(TAG, "onControllerVisibilityChanged: $visibility")
         }
     }
 
